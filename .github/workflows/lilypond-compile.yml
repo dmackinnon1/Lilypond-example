@@ -1,0 +1,44 @@
+name: Compile LilyPond LaTeX Document
+
+# Trigger the action every time someone pushes code to the main branch
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Download the code from the repository onto the runner server
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Install LilyPond and Ghostscript natively in the cloud
+      - name: Install LilyPond Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lilypond ghostscript
+
+      # 3. Create an output directory and pre-process the .lytex file
+      - name: Run lilypond-book Pre-processor
+        run: |
+          mkdir -p out_dir
+          lilypond-book --pdf --output=out_dir main.lytex
+
+      # 4. Compile the generated .tex file into a final PDF
+      - name: Compile LaTeX Document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: out_dir/main.tex
+
+      # 5. Copy the finished PDF back out to the main directory
+      - name: Prepare Artifact
+        run: |
+          cp out_dir/main.pdf ./main_music.pdf
+
+      # 6. Save the PDF inside the GitHub Action run so it can be downloaded
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-pdf-package
+          path: hmain_music.pdf

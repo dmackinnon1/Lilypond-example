@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{graphics}
+
+\begin{document}
+
+\title{LilyPond in \LaTeX: Hello World}
+\author{Overleaf Support Testing}
+\date{\today}
+\maketitle
+
+This is a standard text paragraph in \LaTeX. Below is a minimal musical 
+example rendered automatically using LilyPond.
+
+\begin{lilypond}[fragment,staffsize=16]
+  \key c \major
+  \time 4/4
+  c'4 d' e' f' | g'2 g'2 \bar "|."
+\end{lilypond}
+
+The musical fragment above blends into the document layout.
+
+\end{document}
