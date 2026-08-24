@@ -29,7 +29,8 @@ jobs:
       - name: Compile LaTeX Document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: out_dir/main.tex
+          root_file: main.tex
+          working_directory: out_dir 
 
       # 5. Copy the finished PDF back out to the main directory
       - name: Prepare Artifact
