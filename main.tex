@@ -1,16 +1,26 @@
 \documentclass{article}
-\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{parskip}
 
 \begin{document}
 
-\title{LilyPond in \LaTeX: Hello World}
+\title{Hello LilyPond}
 \author{Overleaf Support Testing}
 \date{\today}
 \maketitle
 
-This is a standard text paragraph in \LaTeX. Below is a minimal musical 
-example rendered automatically using LilyPond.
+This is a standard text paragraph in \LaTeX. Below is a minimal musical example rendered (engraved) using LilyPond.
 
-\includegraphics[]{snippet.preview.pdf}
+\begin{center}
+\includegraphics[width=0.5\linewidth]{snippet.preview.pdf}    
+\end{center}
+
+The file \texttt{snippet.ly} provides the LilyPond music snippet. This is compiled outside of Overleaf in GitHub, using the GitHub action  \texttt{lilypond-compile.yml}. That action checks in the compiled PDF image of the music that is written in \texttt{snippet.ly}.
+
+The \texttt{main.tex} file includes the generated PDF that is produced by the GitHub Action. 
+
+If you change the snippet.ly, you need to sync to GitHub, run the GitHub Action, and then sync back to Overleaf and recompile in order to see the updated notation.
+
+
 
 \end{document}
