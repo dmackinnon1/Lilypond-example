@@ -17,6 +17,6 @@ An alternative to to this would be to perform LilyPond image processing locally,
 
 ## Resources
 - [LilyPond site](https://lilypond.org/)
-- [Overleaf GitHub Synchronization](]https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization/github-synchronization)
+- [Overleaf GitHub Synchronization](https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization/github-synchronization)
 
 
